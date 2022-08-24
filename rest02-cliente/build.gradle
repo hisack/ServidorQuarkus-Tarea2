@@ -1,0 +1,61 @@
+plugins {
+    id 'war'
+    id 'java'
+    id "io.freefair.lombok" version "6.5.0.2"
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    //Si está desarrollando con la última versión de hitos,
+    // deberá agregar el siguiente repositorio para resolver el artefacto:
+    maven {
+        url "https://repo.spring.io/libs-milestone/"
+    }
+
+}
+
+dependencies {
+    //CLIENTE JAX-RS
+    implementation group: 'org.jboss.resteasy', name: 'resteasy-client', version: '6.0.1.Final'
+    implementation group: 'org.jboss.resteasy', name: 'resteasy-jackson2-provider', version: '6.0.1.Final'
+
+    implementation group: 'org.jboss.resteasy', name: 'resteasy-servlet-initializer', version: '6.0.1.Final'
+    implementation group: 'org.jboss.resteasy', name: 'resteasy-core', version: '6.0.1.Final'
+
+    // https://mvnrepository.com/artifact/org.jboss.resteasy/resteasy-spring
+    //implementation group: 'org.jboss.resteasy', name: 'resteasy-spring', version: '4.7.6.Final'
+
+
+    ///SPRING FRAMEWORK
+    implementation group: 'org.springframework', name: 'spring-web', version: '6.0.0-M1'
+    implementation group: 'org.springframework', name: 'spring-webmvc', version: '6.0.0-M1'
+    implementation group: 'org.thymeleaf', name: 'thymeleaf-spring6', version: '3.1.0.M1'
+
+    compileOnly group: 'jakarta.servlet', name: 'jakarta.servlet-api', version: '6.0.0'
+    implementation group: 'jakarta.servlet.jsp.jstl', name: 'jakarta.servlet.jsp.jstl-api', version: '2.0.0'
+
+
+
+
+    // https://mvnrepository.com/artifact/org.springframework/spring-context
+    implementation group: 'org.springframework', name: 'spring-context', version: '5.3.21'
+
+    //compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    // https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api
+    //compileOnly group: 'jakarta.servlet', name: 'jakarta.servlet-api', version: '6.0.0'
+    //implementation group: 'org.springframework', name: 'spring-core', version: '5.3.21'
+    //implementation group: 'org.springframework', name: 'spring-web', version: '5.3.21'
+
+    // implementation group: 'com.zaxxer', name: 'HikariCP', version: '5.0.1'
+
+}
+sourceSets{
+    main {
+        output.resourcesDir = file("${buildDir}/classes/java/main")
+    }
+}
+
+

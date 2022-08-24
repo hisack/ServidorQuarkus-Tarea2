@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'io.quarkus' version '2.10.2.Final'
+    id "io.freefair.lombok" version "6.5.0.2"
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext{
+    quarkusVersion = '2.10.2.Final'
+}
+
+dependencies {
+
+    //Quarkus
+    implementation enforcedPlatform("io.quarkus:quarkus-universe-bom:${project.quarkusVersion}")
+    implementation group: 'io.quarkus', name: 'quarkus-arc'
+    implementation group: 'io.quarkus', name: 'quarkus-resteasy-reactive'
+
+    //Soporte json
+    implementation group: 'io.quarkus', name: 'quarkus-resteasy-reactive-jackson'
+
+    //POSTGRESQL
+    //implementation group: 'org.postgresql', name: 'postgresql', version: '42.4.0'
+    implementation group: 'io.quarkus', name: 'quarkus-jdbc-postgresql'
+    implementation group: 'com.zaxxer', name: 'HikariCP', version: '5.0.1'
+
+}
+
+
+test {
+    useJUnitPlatform()
+}
+
